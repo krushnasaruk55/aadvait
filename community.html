@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - StudyHub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="community.css">
+</head>
+
+<body>
+    <!-- Mobile Header (Mobile Only) -->
+    <div class="mobile-header">
+        <div class="mobile-header-logo">
+            <i class="fas fa-graduation-cap"></i>
+            <span>StudyHub</span>
+        </div>
+        <div class="mobile-header-actions">
+            <button class="mobile-header-btn" onclick="openModal('createPostModal')" title="Create Post">
+                <i class="fas fa-plus-square"></i>
+            </button>
+            <button class="mobile-header-btn" onclick="window.location.href='profile.html'" title="Profile">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Desktop Sidebar -->
+        <aside class="sidebar">
+            <a href="index.html" class="sidebar-logo">
+                <i class="fas fa-graduation-cap"></i>
+                StudyHub
+            </a>
+
+            <nav>
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-home"></i> <span>Home</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-search"></i> <span>Search</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-compass"></i> <span>Explore</span>
+                </a>
+                <a href="videos.html" class="nav-item">
+                    <i class="fas fa-video"></i> <span>Videos</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-comment-dots"></i> <span>Messages</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-heart"></i> <span>Notifications</span>
+                </a>
+                <a href="#" class="nav-item" id="createPostBtn">
+                    <i class="fas fa-plus-square"></i> <span>Create</span>
+                </a>
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-users"></i> <span>Community</span>
+                </a>
+                <a href="profile.html" class="nav-item">
+                    <div
+                        style="width: 24px; height: 24px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">
+                        U</div>
+                    <span>Profile</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="feed-container">
+                <!-- Stories / Communities -->
+                <div class="stories-bar" id="communitiesBar">
+                    <div class="story-item create-story" onclick="openModal('createCommunityModal')">
+                        <div class="story-ring">
+                            <div class="story-avatar">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                        </div>
+                        <span class="story-name">New Group</span>
+                    </div>
+                    <!-- Communities will be injected here -->
+                </div>
+
+                <!-- Feed -->
+                <div id="feed">
+                    <!-- Posts will be injected here -->
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                <div class="suggestion-item" style="margin-bottom: 2rem;">
+                    <div class="suggestion-user">
+                        <div class="insta-avatar"
+                            style="width: 56px; height: 56px; background: var(--primary); color: white; font-size: 1.5rem;">
+                            S</div>
+                        <div>
+                            <div style="font-weight: 600;">student_user</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">StudyHub Member</div>
+                        </div>
+                    </div>
+                    <button class="follow-btn">Switch</button>
+                </div>
+
+                <div class="suggestion-header">
+                    <span>Suggested for you</span>
+                    <span style="color: var(--text-primary); font-size: 0.8rem; cursor: pointer;">See All</span>
+                </div>
+
+                <div id="suggestionsList">
+                    <!-- Suggestions injected here -->
+                </div>
+
+                <div style="margin-top: 2rem; font-size: 0.75rem; color: var(--text-muted); line-height: 1.5;">
+                    About · Help · Press · API · Jobs · Privacy · Terms · Locations · Language
+                    <br><br>
+                    © 2025 STUDYHUB
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation (Mobile Only) -->
+    <div class="mobile-bottom-nav">
+        <button class="mobile-nav-btn" onclick="window.location.href='index.html'">
+            <i class="fas fa-home"></i>
+        </button>
+        <button class="mobile-nav-btn" onclick="window.location.href='flashcards.html'">
+            <i class="fas fa-clone"></i>
+        </button>
+        <button class="mobile-nav-btn" onclick="openModal('createPostModal')">
+            <i class="fas fa-plus-square"></i>
+        </button>
+        <button class="mobile-nav-btn active">
+            <i class="fas fa-users"></i>
+        </button>
+        <button class="mobile-nav-btn" onclick="window.location.href='ai-assistant.html'">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal">
+        <div class="modal-content"
+            style="max-width: 800px; height: 600px; display: flex; flex-direction: column; padding: 0;">
+            <div class="modal-header" style="border-bottom: 1px solid var(--border-light); padding: 0.75rem 1rem;">
+                <h3 style="margin: 0; font-size: 1rem; text-align: center; flex: 1;">Create new post</h3>
+                <button class="modal-close" onclick="closeModal('createPostModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div style="display: flex; flex-direction: column; flex: 1; padding: 1rem;">
+                <textarea id="postCaption"
+                    style="border: none; resize: none; outline: none; font-family: inherit; font-size: 1rem; flex: 1;"
+                    placeholder="Write a caption..."></textarea>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                    <i class="far fa-smile" style="font-size: 1.25rem; color: var(--text-secondary);"></i>
+                    <span style="font-size: 0.8rem; color: var(--text-muted);">0/2,200</span>
+                </div>
+                <div style="margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 1rem;">
+                    <label style="display: block; font-size: 0.9rem; margin-bottom: 0.5rem;">Community</label>
+                    <select id="postCommunitySelect" class="form-select">
+                        <option value="General">General</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Mathematics">Mathematics</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="sharePostBtn" style="margin-top: auto;">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Community Modal -->
+    <div id="createCommunityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Community</h3>
+                <button class="modal-close" onclick="closeModal('createCommunityModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Community Name</label>
+                    <input type="text" id="communityName" class="form-input" placeholder="e.g., CS101 Study Group">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="communityCategory" class="form-select">
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Mathematics">Mathematics</option>
+                        <option value="Science">Science</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('createCommunityModal')">Cancel</button>
+                <button class="btn btn-primary" id="saveCommunityBtn">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="common.js"></script>
+    <script src="community-app.js"></script>
+</body>
+
+</html>

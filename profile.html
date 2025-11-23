@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - StudyHub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <nav class="navbar" style="padding: 1rem 2rem; background: white; border-bottom: 1px solid var(--border-light);">
+        <div class="nav-container" style="max-width: 935px;">
+            <a href="community.html" class="nav-brand" style="font-size: 1.5rem;">
+                <i class="fas fa-arrow-left" style="font-size: 1.2rem; margin-right: 0.5rem;"></i>
+                Back to Feed
+            </a>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar-container">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+            </div>
+            <div class="profile-info">
+                <div class="profile-top">
+                    <h2 class="profile-username" id="profileUsername">username</h2>
+                    <button class="btn btn-secondary btn-sm" id="editProfileBtn" style="display: none;">Edit
+                        Profile</button>
+                    <button class="btn btn-primary btn-sm" id="followBtn" style="display: none;">Follow</button>
+                </div>
+                <div class="profile-stats">
+                    <span><span class="stat-count" id="postCount">0</span> posts</span>
+                    <span><span class="stat-count">124</span> followers</span>
+                    <span><span class="stat-count">89</span> following</span>
+                </div>
+                <div class="profile-bio">
+                    <strong id="profileRealName">User Name</strong>
+                    <span id="profileBioText">Student at StudyHub 🎓 | Learning & Growing 🚀</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="profile-grid" id="profileGrid">
+            <!-- Posts injected here -->
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="common.js"></script>
+    <script src="profile.js"></script>
+</body>
+
+</html>

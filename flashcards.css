@@ -1,0 +1,336 @@
+/* ==================== Flashcards Page Styles ==================== */
+
+/* --- Topic Input Section --- */
+.topic-input-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative background element */
+.topic-input-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--primary-lighter) 0%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tab-btn {
+    position: relative;
+    opacity: 0.7;
+}
+
+.tab-btn:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    opacity: 1;
+    color: var(--primary) !important;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: var(--radius-full);
+}
+
+.topic-input-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    position: relative;
+    z-index: 1;
+}
+
+.topic-input-wrapper .form-input {
+    flex: 1;
+    font-size: 1.125rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border-light);
+}
+
+.topic-input-wrapper .form-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-lighter);
+}
+
+.topic-input-wrapper .btn {
+    padding: 0 2.5rem;
+    border-radius: var(--radius-lg);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* --- Document Upload --- */
+#dropZone {
+    border: 3px dashed var(--border-medium);
+    border-radius: var(--radius-xl);
+    padding: 4rem 2rem;
+    text-align: center;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#dropZone:hover {
+    border-color: var(--primary);
+    background: var(--primary-lighter);
+    transform: scale(1.01);
+}
+
+/* --- Flashcard Controls --- */
+.flashcard-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: var(--surface);
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Flashcards Grid & 3D Flip --- */
+.flashcards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+.flashcard {
+    background: transparent;
+    min-height: 320px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy transition */
+}
+
+.flashcard:hover {
+    transform: translateY(-5px);
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+}
+
+.flashcard-front {
+    z-index: 2;
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #f0f9ff, #e0f2fe);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.15);
+}
+
+/* Content Styling */
+.flashcard-category {
+    align-self: flex-start;
+    padding: 0.5rem 1rem;
+    background: var(--primary-lighter);
+    color: var(--primary-dark);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.flashcard-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.flashcard-question {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.flashcard-answer {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Actions (Buttons) */
+.flashcard-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    gap: 0.75rem;
+    opacity: 0;
+    /* Hidden by default for cleaner look */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.flashcard:hover .flashcard-actions {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Always show actions on touch devices */
+@media (hover: none) {
+    .flashcard-actions {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flashcard-actions .btn {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--border-medium);
+    color: var(--text-secondary);
+}
+
+.flashcard-actions .btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* --- Responsive Design (Mobile) --- */
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .topic-input-card {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .topic-input-wrapper {
+        flex-direction: column;
+    }
+
+    .topic-input-wrapper .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    /* Flashcard Controls Stack */
+    .flashcard-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .flashcard-controls>div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #categoryFilter {
+        width: 100% !important;
+    }
+
+    #studyModeBtn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Grid becomes single column */
+    .flashcards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+        /* Add slight padding to prevent edge touching */
+    }
+
+    .flashcard {
+        min-height: 280px;
+        /* Slightly smaller on mobile */
+    }
+
+    .flashcard-question {
+        font-size: 1.25rem;
+    }
+
+    .flashcard-answer {
+        font-size: 1.125rem;
+    }
+}
+
+/* --- Study Mode Modal Improvements --- */
+#studyModal .modal-content {
+    background: var(--bg-secondary);
+    border: none;
+}
+
+#studyCardContainer .card {
+    box-shadow: var(--shadow-xl);
+    border: none !important;
+    /* Override inline style */
+    background: white !important;
+    position: relative;
+    overflow: hidden;
+}
+
+#studyCardContainer .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}

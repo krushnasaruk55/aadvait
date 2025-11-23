@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - StudyHub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyHub</span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="flashcards.html" class="nav-link">Flashcards</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="ai-assistant.html" class="nav-link">AI Assistant</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="settings.html" class="nav-link active">Settings</a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="settings-container">
+        <div class="settings-header">
+            <h1>Settings</h1>
+            <p style="color: var(--text-secondary);">Manage your profile and preferences</p>
+        </div>
+
+        <!-- Profile Settings -->
+        <div class="settings-section">
+            <h2 class="settings-title">
+                <i class="fas fa-user-circle" style="color: var(--primary);"></i>
+                Profile Information
+            </h2>
+
+            <div class="profile-preview">
+                <div class="profile-avatar" id="profileAvatar">U</div>
+                <div>
+                    <h3 id="profileNameDisplay" style="margin-bottom: 0.25rem;">User Name</h3>
+                    <p id="profileEmailDisplay" style="color: var(--text-secondary); font-size: 0.9rem;">
+                        user@example.com</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="settingsName" class="form-input">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="settingsEmail" class="form-input" disabled
+                    style="background: #f3f4f6; cursor: not-allowed;">
+                <small style="color: var(--text-muted);">Email cannot be changed</small>
+            </div>
+
+            <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+        </div>
+
+        <!-- API Configuration -->
+        <div class="settings-section">
+            <h2 class="settings-title">
+                <i class="fas fa-key" style="color: #f59e0b;"></i>
+                API Configuration
+            </h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                Manage your API keys for AI features and video search. Keys are stored locally on your device.
+            </p>
+
+            <div class="form-group">
+                <label class="form-label">DeepSeek API Key (AI Chat & Flashcards)</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="password" id="deepseekKey" class="form-input" placeholder="sk-...">
+                    <button class="btn btn-secondary" onclick="toggleVisibility('deepseekKey')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">YouTube Data API Key (Video Search)</label>
+                <div style="display: flex; gap: 0.5rem;">
+                    <input type="password" id="youtubeKey" class="form-input" placeholder="AIza...">
+                    <button class="btn btn-secondary" onclick="toggleVisibility('youtubeKey')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="saveApiKeys()">Save Keys</button>
+        </div>
+
+        <!-- Account Actions -->
+        <div class="settings-section danger-zone">
+            <h2 class="settings-title danger-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                Account Actions
+            </h2>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="color: #991b1b; margin-bottom: 0.25rem;">Sign Out</h4>
+                    <p style="color: #b91c1c; font-size: 0.9rem;">Log out of your account on this device</p>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()"
+                    style="border-color: #fecaca; color: #991b1b; background: white;">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="common.js"></script>
+    <script src="settings.js"></script>
+</body>
+
+</html>

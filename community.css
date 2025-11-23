@@ -1,0 +1,530 @@
+/* Instagram-like Layout Overrides */
+body {
+    background-color: #fafafa;
+    overflow-y: scroll;
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 245px;
+    background: white;
+    border-right: 1px solid var(--border-light);
+    padding: 2rem 1rem;
+    position: fixed;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-left: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background 0.2s;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.nav-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+.nav-item.active {
+    font-weight: 700;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    width: 24px;
+}
+
+/* Main Feed */
+.main-content {
+    flex: 1;
+    margin-left: 245px;
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.feed-container {
+    width: 100%;
+    max-width: 630px;
+    padding: 0 1rem;
+}
+
+/* Stories / Communities Bar */
+.stories-bar {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.stories-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    min-width: 66px;
+}
+
+.story-ring {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    padding: 2px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.story-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #666;
+    overflow: hidden;
+}
+
+.story-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.create-story .story-ring {
+    background: none;
+    border: 2px solid var(--border-light);
+}
+
+/* Post Card */
+.insta-card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.insta-header {
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.insta-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.insta-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.insta-content {
+    padding: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.insta-actions {
+    padding: 0.75rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+}
+
+.insta-action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: 0;
+    transition: transform 0.1s;
+}
+
+.insta-action-btn:active {
+    transform: scale(0.9);
+}
+
+.insta-action-btn:hover {
+    color: var(--text-secondary);
+}
+
+.insta-action-btn.liked {
+    color: #ed4956;
+}
+
+.insta-likes {
+    padding: 0 0.75rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.insta-caption {
+    padding: 0 0.75rem 0.75rem;
+    font-size: 0.9rem;
+}
+
+.insta-caption strong {
+    margin-right: 0.5rem;
+}
+
+.insta-comments-link {
+    padding: 0 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.insta-time {
+    padding: 0 0.75rem 0.75rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    width: 320px;
+    padding: 2rem 1rem;
+    display: none;
+}
+
+@media (min-width: 1000px) {
+    .right-sidebar {
+        display: block;
+    }
+}
+
+.suggestion-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.suggestion-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.follow-btn {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* ==================== MOBILE HEADER ==================== */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.75rem 1rem;
+    z-index: 200;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-header-logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mobile-header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.mobile-header-btn {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+/* ==================== MOBILE BOTTOM NAV ==================== */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid var(--border-light);
+    padding: 0.5rem 1rem;
+    z-index: 200;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mobile-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s;
+}
+
+.mobile-nav-btn.active {
+    color: var(--text-primary);
+}
+
+/* ==================== MOBILE RESPONSIVENESS ==================== */
+@media (max-width: 768px) {
+    body {
+        background: white;
+    }
+
+    /* Show mobile header and bottom nav */
+    .mobile-header {
+        display: flex;
+    }
+
+    .mobile-bottom-nav {
+        display: flex;
+    }
+
+    /* Hide desktop sidebar */
+    .sidebar {
+        display: none;
+    }
+
+    /* Adjust main content for mobile header and bottom nav */
+    .main-content {
+        margin-left: 0;
+        padding-top: 3.5rem;
+        /* Space for mobile header */
+        padding-bottom: 4rem;
+        /* Space for mobile bottom nav */
+    }
+
+    .feed-container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    /* Stories bar */
+    .stories-bar {
+        padding: 0.75rem;
+        margin-bottom: 0;
+        gap: 0.75rem;
+        background: white;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .story-item {
+        min-width: 64px;
+    }
+
+    .story-ring {
+        width: 64px;
+        height: 64px;
+    }
+
+    .story-avatar {
+        font-size: 1.25rem;
+    }
+
+    .story-name {
+        font-size: 0.7rem;
+        max-width: 64px;
+    }
+
+    /* Post cards */
+    .insta-card {
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        margin-bottom: 0;
+        border-bottom: 8px solid #fafafa;
+    }
+
+    .insta-header {
+        padding: 0.75rem 1rem;
+        border-bottom: none;
+    }
+
+    .insta-user {
+        gap: 0.75rem;
+    }
+
+    .insta-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+
+    .insta-content {
+        padding: 0;
+    }
+
+    .insta-content img {
+        width: 100%;
+        display: block;
+    }
+
+    /* Action buttons */
+    .insta-actions {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+        border-top: none;
+    }
+
+    .insta-action-btn {
+        font-size: 1.6rem;
+        padding: 0.5rem;
+    }
+
+    .insta-likes {
+        padding: 0 1rem;
+        margin-bottom: 0.25rem;
+        font-size: 0.875rem;
+    }
+
+    .insta-caption {
+        padding: 0 1rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .insta-comments-link {
+        padding: 0 1rem;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .insta-time {
+        padding: 0 1rem 0.75rem;
+        font-size: 0.7rem;
+    }
+
+    /* Add comment section */
+    .insta-add-comment {
+        padding: 0.75rem 1rem !important;
+        border-top: 1px solid var(--border-light);
+    }
+
+    /* Hide right sidebar */
+    .right-sidebar {
+        display: none !important;
+    }
+
+    /* Modals */
+    .modal-content {
+        width: 92% !important;
+        max-width: 92% !important;
+        margin: 2rem auto;
+        max-height: 85vh;
+    }
+
+    /* Hide create post button from sidebar */
+    .sidebar .nav-item#createPostBtn {
+        display: none;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 999px) {
+    .sidebar {
+        width: 72px;
+    }
+
+    .sidebar-logo span,
+    .nav-item span {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 72px;
+    }
+
+    .feed-container {
+        max-width: 100%;
+    }
+}

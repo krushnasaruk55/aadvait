@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="AI Study Assistant - Get instant help with any topic">
+    <title>AI Assistant - StudyHub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ai-assistant.css">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyHub</span>
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="flashcards.html" class="nav-link">Flashcards</a>
+                <a href="videos.html" class="nav-link">Videos</a>
+                <a href="ai-assistant.html" class="nav-link active">AI Assistant</a>
+                <a href="community.html" class="nav-link">Community</a>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Chat Interface -->
+    <div class="chat-interface">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="chat-profile">
+                <div class="chat-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="chat-info">
+                    <h3>StudyHub AI</h3>
+                    <span class="chat-status">Online - Always here to help</span>
+                </div>
+            </div>
+            <div class="chat-actions">
+                <button class="chat-action-btn" id="generateFlashcardsBtn" title="Generate Flashcards">
+                    <i class="fas fa-magic"></i>
+                </button>
+                <button class="chat-action-btn" id="configAIBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <button class="chat-action-btn" id="clearChatBtn" title="Clear Chat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="chatMessages" class="chat-messages">
+            <div class="chat-message ai-message">
+                <div class="message-content">
+                    <p>👋 Hi! I'm your AI study assistant.</p>
+                    <p>Ask me anything about your studies, or tell me a topic to generate flashcards for!</p>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+                <textarea id="chatInput" class="chat-input" placeholder="Type a message" rows="1"></textarea>
+            </div>
+            <button class="send-btn" id="sendBtn">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- API Config Modal -->
+    <div id="apiConfigModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-cog"></i> API Configuration</h3>
+                <button class="modal-close" onclick="closeModal('apiConfigModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="apiConfigContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="common.js"></script>
+    <script src="ai-assistant.js"></script>
+</body>
+
+</html>
